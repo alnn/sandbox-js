@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  form(action="/iam" method="GET")
+    input(type="text" name="text")
+    button(type="submit" name="send")
+      | Ответить

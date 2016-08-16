@@ -90,6 +90,7 @@ paper.monthly();
 joe.tweet("hated the paper today")
 
 console.log('********************************************');
+
 console.log('******************EXAMPLE-2*****************');
 
 publisher = {

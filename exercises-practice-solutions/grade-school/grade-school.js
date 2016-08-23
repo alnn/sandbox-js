@@ -1,56 +1,44 @@
 'use strict';
 
-var School = function() {
+module.exports = function() {
 
     var data = [];
 
-    this.getData = function() {
-        return data;
-    };
+    return {
+        add: function(name, grade) {
+            data.push( new (function() {
+                this.getName = function () {
+                    return name;
+                };
+                this.getGrade = function(){
+                    return grade;
+                };
+            }));
+        },
+        roster: function() {
+            var result = {},
+                grade;
 
-    this.addData = function(val) {
-        data.push(val);
-    };
+            data.sort(function(a, b) {
+                return a.getGrade() < b.getGrade();
+            }).forEach(function(item, indx) {
+                grade = item.getGrade();
 
-};
+                if (!result[grade]) {
+                    result[grade] = [item.getName()];
+                } else {
+                    result[grade].push(item.getName());
+                }
+            });
 
-School.prototype.add = function(name, grade) {
-    this.addData( new (function() {
-        this.getName = function () {
-            return name;
-        };
-        this.getGrade = function(){
-            return grade;
-        };
-    }));
-};
+            for (grade in result) {
+                result[grade].sort();
+            }
 
-School.prototype.roster = function() {
-    var result = {},
-        grade;
-
-    this.getData().sort(function(a, b) {
-        return a.getGrade() < b.getGrade();
-    }).forEach(function(item, indx) {
-        grade = item.getGrade();
-
-        if (!result[grade]) {
-            result[grade] = [];
+            return result;
+        },
+        grade: function(val) {
+            return this.roster()[val] || [];
         }
-
-        result[grade].push(item.getName());
-    });
-
-    for (grade in result) {
-        result[grade].sort();
-    }
-
-    return result;
+    };
 };
-
-School.prototype.grade = function(val) {
-    var result = this.roster();
-    return result[val] || [];
-};
-
-module.exports = School;

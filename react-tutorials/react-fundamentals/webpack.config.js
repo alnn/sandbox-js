@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./main.js",
+    entry: './main.js',
     module: {
         loaders: [
             {
@@ -10,7 +10,11 @@ module.exports = {
                 loader: 'babel',
                 query: {
                     presets: ['react', 'es2015', 'stage-0'],
-                    plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
+                    plugins: [
+                        'react-html-attrs',
+                        'transform-class-properties',
+                        'transform-decorators-legacy'
+                    ]
                 }
             }
         ]
@@ -20,7 +24,7 @@ module.exports = {
         port: 3333
     },
     output: {
-        path: "./",
-        filename: "index.js"
+        path: './',
+        filename: 'index.js'
     }
 };

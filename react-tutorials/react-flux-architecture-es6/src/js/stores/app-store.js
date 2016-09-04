@@ -48,6 +48,7 @@ const _cartTotals = (qty = 0, total = 0) => {
         qty += cartItem.qty;
         total += cartItem.qty * cartItem.cost;
     });
+    return {qty, total};
 };
 
 const AppStore = Object.assign(EventEmitter.prototype, {

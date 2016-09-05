@@ -1,0 +1,11 @@
+{
+  "name": "store-methods-getstate-dispatch-and-subscribe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC"
+}

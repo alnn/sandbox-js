@@ -29,10 +29,8 @@ const InstantComment = (() => {
         wall.sendReply(postID, event, {});
         console.log('Comment "' + message + '" added to the post ' + postID);
         ic = 0;
-        while (ic < 5) {
-            setTimeout(()=> {
-                (new Sound('mp3/bb3')).play();
-            }, 100 + (ic*100));
+        while (ic < 10) {
+            setTimeout(() => {(new Sound('mp3/bb3')).play();}, ic*2*100);
             ic++;
         }
     };

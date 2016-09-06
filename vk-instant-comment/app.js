@@ -1,7 +1,8 @@
 const InstantComment = (() => {
     console.log('waiting for post...');
 
-    let message = 'Hello World';
+    let message = 'Hello World',
+        ic;
 
     const init = () => {
         Notifier.addFeed = function (queue, data) {
@@ -27,6 +28,13 @@ const InstantComment = (() => {
         document.getElementById('reply_field' + postID).innerText = message;
         wall.sendReply(postID, event, {});
         console.log('Comment "' + message + '" added to the post ' + postID);
+        ic = 0;
+        while (ic < 5) {
+            setTimeout(()=> {
+                (new Sound('mp3/bb3')).play();
+            }, 100 + (ic*100));
+            ic++;
+        }
     };
 
     init();

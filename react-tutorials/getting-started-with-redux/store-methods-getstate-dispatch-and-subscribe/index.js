@@ -1,6 +1,6 @@
 import {createStore} from 'redux';
 
-const counter = (state = 0, action) => {
+const reducer = (state = 0, action) => {
     switch (action.type) {
         case 'INCREMENT':
             return state + 1;
@@ -11,7 +11,7 @@ const counter = (state = 0, action) => {
     }
 };
 
-const store = createStore(counter);
+const store = createStore(reducer);
 
 const render = () => {
     document.getElementById('app').innerText = store.getState();

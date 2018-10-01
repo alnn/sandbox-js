@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.11
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies
+      - run: echo '123'
+      - save_cache:
+          paths:
+            - ./
+          key: v1-dependencies
+      - run: echo 'tests'

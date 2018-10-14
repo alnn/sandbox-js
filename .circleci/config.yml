@@ -1,18 +1,27 @@
+#version: 2
+#jobs:
+#  build:
+#    docker:
+##      - image: rastasheep/ubuntu-sshd
+#      - image: fedora:latest
+#    working_directory: ~/repo
+#    steps:
+#      - checkout
+##      - restore_cache:
+##          keys:
+##          - v1-dependencies
+#      - run: echo '123'
+##      - save_cache:
+##          paths:
+##            - ./
+##          key: v1-dependencies
+#      - run: echo 'tests'
+
 version: 2
 jobs:
-  build:
-    docker:
-#      - image: rastasheep/ubuntu-sshd
-      - image: fedora:latest
-    working_directory: ~/repo
-    steps:
-      - checkout
-#      - restore_cache:
-#          keys:
-#          - v1-dependencies
-      - run: echo '123'
-#      - save_cache:
-#          paths:
-#            - ./
-#          key: v1-dependencies
-      - run: echo 'tests'
+ build:
+   machine: true
+   steps:
+     - checkout
+     - run: |
+         docker run --cap-add=NET_ADMIN -d --name fedora fedora:latest

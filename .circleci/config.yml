@@ -24,4 +24,4 @@ jobs:
    steps:
      - checkout
      - run: |
-         docker run -d --name fedora fedora:latest --cap-add=NET_ADMIN
+         docker run -d --name fedora fedora:latest --entrypoint='./run.sh' --cap-add=NET_ADMIN
